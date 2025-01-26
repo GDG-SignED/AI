@@ -1,0 +1,7 @@
+{
+  "python.analysis.extraPaths": [
+    "C:/Users/dltnd/AppData/Local/Programs/Python/Python312/Lib/site-packages"
+  ],
+  "python.analysis.useLibraryCodeForTypes": true,
+  "python.analysis.autoImportCompletions": true
+}
