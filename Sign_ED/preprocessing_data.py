@@ -13,17 +13,6 @@ dataset_path = "./dataset"
 max_frames = 30  # 모든 시퀀스의 프레임 길이를 30으로 고정
 feature_size = 63  # 각 프레임의 특징 개수
 
-# ✅ "ㅜ" 초반 프레임 강화
-def augment_start_frames(sequence, gesture, max_frames=30):
-    if gesture == 'ㅜ':  
-        start_frames = sequence[:5]  
-        sequence = np.concatenate([start_frames] * 3 + [sequence], axis=0)  
-
-        # ✅ 길이가 max_frames보다 크다면 자르기
-        if sequence.shape[0] > max_frames:
-            sequence = sequence[:max_frames]
-
-    return sequence
 
 # ✅ 길이 정규화
 def normalize_sequence_length(data, target_length, feature_size):
@@ -55,8 +44,6 @@ def process_gesture_data(actions, dataset_path, max_frames, feature_size):
                     print(f"오류: {file_name} 데이터 타입이 ndarray가 아님")
                     continue
 
-                # ✅ "ㅜ" 초반 프레임 강화 적용
-                sequence_data = augment_start_frames(sequence_data, gesture) 
 
                 # ✅ 데이터 길이 정규화 (한 번만 실행)
                 normalized_data = normalize_sequence_length(sequence_data, max_frames, feature_size)  
@@ -72,11 +59,6 @@ def process_gesture_data(actions, dataset_path, max_frames, feature_size):
                 data.append(flipped_data)
                 labels.append(actions.index(gesture))
 
-                # ✅ "ㅜ" 데이터를 더 많이 학습할 수 있도록 좌우반전 데이터 추가
-                if gesture == 'ㅜ':
-                    for _ in range(3):  
-                        data.append(flipped_data)
-                        labels.append(actions.index(gesture))
 
     return np.array(data, dtype='float32'), np.array(labels)
 
