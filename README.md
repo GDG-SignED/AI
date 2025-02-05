@@ -117,23 +117,24 @@ AI_NEW/
 │
 ├── model/                    # Saved models and logs
 │   ├── Sign_ED_best.keras    # Best-trained model
+│   ├── Sign_ED               # Last-trained model 
 │   ├── history.pkl           # Training history
 │   ├── model_summary.txt     # Model architecture summary
 │
 ├── Sign_ED/                  # Core scripts for model evaluation and testing
 │   ├── test/                 # Testing utilities
-│   │   ├── testdata/         # Test datasets
-│   │   ├── model_test_webcam.py # Real-time recognition script
-│   │   ├── simplemodeltest.py   # Quick model test script
-│   │   ├── test_saved_data.py   # Pre-collected dataset testing
-│   │   ├── webcam_data_capture.py # Webcam-based data collection
-│   └── making_dataset.py     # Data collection script
+│   ├── testdata/             # Test datasets
+│   ├── model_test_webcam.py  # Real-time recognition script
+│   ├── simplemodeltest.py    # Quick model test script
+│   ├── test_saved_data.py    # Pre-collected dataset testing 
+│   └── webcam_data_capture.py # Webcam-based data collection (for test_saved_data.py)
 │
 ├── suyoun_dataset/           # Updated gesture dataset (customized)
 │   ├── ㄱ/                   # Data for gesture ㄱ
 │   ├── ㄴ/                   # Data for gesture ㄴ
 │   ├── ...                   # Additional gesture-specific folders
 │
+├── making_dataset.py         # Data collection script
 ├── model_test.py             # Model evaluation script
 ├── model_training.py         # Model training script
 ├── preprocessing_data.py     # Data preprocessing script
